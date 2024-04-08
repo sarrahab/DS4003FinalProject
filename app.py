@@ -366,7 +366,7 @@ app.layout = html.Div(children=[
 if __name__ == '__main__':
     #appy.run(jupyter_mode='tab', debug=True)
     # i changed the code above to reflect what professor wanted us to do!
-    app.run_server(debug=False, port=1718) #run the server
+    app.run_server(debug=True) #run the server
 
 # %%
 
