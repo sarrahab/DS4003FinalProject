@@ -60,7 +60,6 @@ df = pd.read_csv('data.csv')
 df.head()
 
 # %%
-# Assuming 'df' is your DataFrame
 df['EmpID'] = df['EmpID'].astype(int)
 df['MarriedID'] = df['MarriedID'].astype(int)
 df['MaritalStatusID'] = df['MaritalStatusID'].astype(int)
@@ -68,22 +67,19 @@ df['GenderID'] = df['GenderID'].astype(int)
 df['EmpStatusID'] = df['EmpStatusID'].astype(int)
 df['DeptID'] = df['DeptID'].astype(int)
 df['PerfScoreID'] = df['PerfScoreID'].astype(int)
-df['FromDiversityJobFairID'] = df['FromDiversityJobFairID'].astype(int)  # Assuming binary is intended as integer (0 or 1)
+df['FromDiversityJobFairID'] = df['FromDiversityJobFairID'].astype(int)  
 df['Salary'] = df['Salary'].astype(int)
-df['Termd'] = df['Termd'].astype(int)  # Assuming binary is intended as integer (0 or 1)
+df['Termd'] = df['Termd'].astype(int) 
 df['PositionID'] = df['PositionID'].astype(int)
 df['DOB'] = pd.to_datetime(df['DOB']).dt.date
 df['DateofHire'] = pd.to_datetime(df['DateofHire']).dt.date
 df['DateofTermination'] = pd.to_datetime(df['DateofTermination'], errors='coerce').dt.date
 df['LastPerformanceReview_Date'] = pd.to_datetime(df['LastPerformanceReview_Date'], errors='coerce').dt.date
-df['EngagementSurvey'] = df['EngagementSurvey'].astype(float)  # Assuming Engagement Survey results could be decimal
+df['EngagementSurvey'] = df['EngagementSurvey'].astype(float)  
 df['EmpSatisfaction'] = df['EmpSatisfaction'].astype(int)
 df['Absences'] = df['Absences'].astype(int)
-
-# Note: For the Boolean column 'HispanicLatino', ensure it is converted from Yes/No strings to Boolean if not already done
 df['HispanicLatino'] = df['HispanicLatino'].replace({'Yes': True, 'No': False}).astype(bool)
 
-# Print the DataFrame's dtypes to verify the changes
 print(df.dtypes)
 
 # %% [markdown]
