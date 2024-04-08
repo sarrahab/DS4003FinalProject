@@ -245,122 +245,122 @@ app.layout = html.Div(children=[
         
     ], style={'width': '25%', 'display': 'inline-block', 'verticalAlign': 'top', 'padding': '10px', 'backgroundColor': '#f3f2f4', 'position': 'relative'}), #light gray sidebar background
     
-    html.Div([
-        dcc.Graph(id='salary-engagement-scatter'),
-        dcc.Graph(id='avg-satisfaction-bar'),  # add this line for the bar chart
-    ], style={'width': '70%', 'display': 'inline-block', 'backgroundColor': '#f3f2f4', 'position': 'relative'}), #light gray background in main content area
-])
+#     html.Div([
+#         dcc.Graph(id='salary-engagement-scatter'),
+#         dcc.Graph(id='avg-satisfaction-bar'),  # add this line for the bar chart
+#     ], style={'width': '70%', 'display': 'inline-block', 'backgroundColor': '#f3f2f4', 'position': 'relative'}), #light gray background in main content area
+# ])
 
-# callback for updating the scatter plot
-@app.callback(
-    Output('salary-engagement-scatter', 'figure'),
-    [Input('department-dropdown', 'value'),
-     Input('position-dropdown', 'value'),
-     Input('performance-dropdown', 'value'),
-     Input('gender-dropdown', 'value'),
-     Input('salary-slider', 'value'),
-     Input('age-slider', 'value'),
-     Input('satisfaction-slider', 'value'),
-     Input('date-picker-range', 'start_date'),
-     Input('date-picker-range', 'end_date')])
-def update_scatter_plot(department, position, performance, gender, salary_range, age_range, satisfaction, start_date, end_date):
-    # ensure DateofHire is a datetime object for date filtering
-    filtered_df = df.copy()
-    filtered_df['DateofHire'] = pd.to_datetime(filtered_df['DateofHire'])
+# # callback for updating the scatter plot
+# @app.callback(
+#     Output('salary-engagement-scatter', 'figure'),
+#     [Input('department-dropdown', 'value'),
+#      Input('position-dropdown', 'value'),
+#      Input('performance-dropdown', 'value'),
+#      Input('gender-dropdown', 'value'),
+#      Input('salary-slider', 'value'),
+#      Input('age-slider', 'value'),
+#      Input('satisfaction-slider', 'value'),
+#      Input('date-picker-range', 'start_date'),
+#      Input('date-picker-range', 'end_date')])
+# def update_scatter_plot(department, position, performance, gender, salary_range, age_range, satisfaction, start_date, end_date):
+#     # ensure DateofHire is a datetime object for date filtering
+#     filtered_df = df.copy()
+#     filtered_df['DateofHire'] = pd.to_datetime(filtered_df['DateofHire'])
 
-    # Apply filters based on the inputs
-    if department:
-        filtered_df = filtered_df[filtered_df['Department'] == department]
-    if position:
-        filtered_df = filtered_df[filtered_df['Position'] == position]
-    if performance:
-        filtered_df = filtered_df[filtered_df['PerformanceScore'] == performance]
-    if gender:
-        filtered_df = filtered_df[filtered_df['Sex'] == gender]
-    if salary_range:
-        filtered_df = filtered_df[(filtered_df['Salary'] >= salary_range[0]) & (filtered_df['Salary'] <= salary_range[1])]
-    if age_range:
-        filtered_df = filtered_df[(filtered_df['Age'] >= age_range[0]) & (filtered_df['Age'] <= age_range[1])]
-    if satisfaction:
-        filtered_df = filtered_df[filtered_df['EmpSatisfaction'] == satisfaction]
+#     # Apply filters based on the inputs
+#     if department:
+#         filtered_df = filtered_df[filtered_df['Department'] == department]
+#     if position:
+#         filtered_df = filtered_df[filtered_df['Position'] == position]
+#     if performance:
+#         filtered_df = filtered_df[filtered_df['PerformanceScore'] == performance]
+#     if gender:
+#         filtered_df = filtered_df[filtered_df['Sex'] == gender]
+#     if salary_range:
+#         filtered_df = filtered_df[(filtered_df['Salary'] >= salary_range[0]) & (filtered_df['Salary'] <= salary_range[1])]
+#     if age_range:
+#         filtered_df = filtered_df[(filtered_df['Age'] >= age_range[0]) & (filtered_df['Age'] <= age_range[1])]
+#     if satisfaction:
+#         filtered_df = filtered_df[filtered_df['EmpSatisfaction'] == satisfaction]
     
-    # generate and return scatter plot figure based on filtered_df
-    fig_scatter = px.scatter(filtered_df, x='Salary', y='EngagementSurvey', 
-                             title='Employee Engagement Score VS Salary', 
-                             hover_data=['Employee_Name']) 
+#     # generate and return scatter plot figure based on filtered_df
+#     fig_scatter = px.scatter(filtered_df, x='Salary', y='EngagementSurvey', 
+#                              title='Employee Engagement Score VS Salary', 
+#                              hover_data=['Employee_Name']) 
     
-    fig_scatter.update_layout(
-        plot_bgcolor='rgba(0,0,0,0)',  # transparent background for plot
-        paper_bgcolor= '#f3f2f4',  # light gray background outside the plot area
-        font=dict(color= '#4b2e83'),  # purple font color
-    )
+#     fig_scatter.update_layout(
+#         plot_bgcolor='rgba(0,0,0,0)',  # transparent background for plot
+#         paper_bgcolor= '#f3f2f4',  # light gray background outside the plot area
+#         font=dict(color= '#4b2e83'),  # purple font color
+#     )
 
-    # Update the y-axis title
-    fig_scatter.update_yaxes(title_text='Engagement Survey Score')
+#     # Update the y-axis title
+#     fig_scatter.update_yaxes(title_text='Engagement Survey Score')
 
-    fig_scatter.update_traces(marker=dict(color='#4b2e83'))  # my preferred shade of purple
+#     fig_scatter.update_traces(marker=dict(color='#4b2e83'))  # my preferred shade of purple
 
 
-    return fig_scatter
+#     return fig_scatter
 
-# callback for updating the bar chart
-@app.callback(
-    Output('avg-satisfaction-bar', 'figure'),
-    [Input('department-dropdown', 'value'),
-     Input('position-dropdown', 'value'),
-     Input('performance-dropdown', 'value'),
-     Input('gender-dropdown', 'value'),
-     Input('salary-slider', 'value'),
-     Input('age-slider', 'value'),
-     Input('satisfaction-slider', 'value'),
-     Input('date-picker-range', 'start_date'),
-     Input('date-picker-range', 'end_date')])
-def update_bar_chart(department, position, performance, gender, salary_range, age_range, satisfaction, start_date, end_date):
+# # callback for updating the bar chart
+# @app.callback(
+#     Output('avg-satisfaction-bar', 'figure'),
+#     [Input('department-dropdown', 'value'),
+#      Input('position-dropdown', 'value'),
+#      Input('performance-dropdown', 'value'),
+#      Input('gender-dropdown', 'value'),
+#      Input('salary-slider', 'value'),
+#      Input('age-slider', 'value'),
+#      Input('satisfaction-slider', 'value'),
+#      Input('date-picker-range', 'start_date'),
+#      Input('date-picker-range', 'end_date')])
+# def update_bar_chart(department, position, performance, gender, salary_range, age_range, satisfaction, start_date, end_date):
     
-    filtered_df1 = df.copy()
+#     filtered_df1 = df.copy()
     
-    # convert 'DateofHire' to datetime for filtering
-    filtered_df1['DateofHire'] = pd.to_datetime(filtered_df1['DateofHire'])
+#     # convert 'DateofHire' to datetime for filtering
+#     filtered_df1['DateofHire'] = pd.to_datetime(filtered_df1['DateofHire'])
     
-    # apply filters based on the inputs
-    if department:
-        filtered_df1 = filtered_df1[filtered_df1['Department'] == department]
-    if position:
-        filtered_df1 = filtered_df1[filtered_df1['Position'] == position]
-    if performance:
-        filtered_df1 = filtered_df1[filtered_df1['PerformanceScore'] == performance]
-    if gender:
-        filtered_df1 = filtered_df1[filtered_df1['Sex'] == gender]
-    if salary_range:
-        filtered_df1 = filtered_df1[(filtered_df1['Salary'] >= salary_range[0]) & (filtered_df1['Salary'] <= salary_range[1])]
-    if age_range:
-        filtered_df1 = filtered_df1[(filtered_df1['Age'] >= age_range[0]) & (filtered_df1['Age'] <= age_range[1])]
-    if start_date and end_date:
-        start_date_obj = datetime.strptime(start_date, '%Y-%m-%d')
-        end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
-        filtered_df1 = filtered_df1[(filtered_df1['DateofHire'] >= start_date_obj) & (filtered_df1['DateofHire'] <= end_date_obj)]
+#     # apply filters based on the inputs
+#     if department:
+#         filtered_df1 = filtered_df1[filtered_df1['Department'] == department]
+#     if position:
+#         filtered_df1 = filtered_df1[filtered_df1['Position'] == position]
+#     if performance:
+#         filtered_df1 = filtered_df1[filtered_df1['PerformanceScore'] == performance]
+#     if gender:
+#         filtered_df1 = filtered_df1[filtered_df1['Sex'] == gender]
+#     if salary_range:
+#         filtered_df1 = filtered_df1[(filtered_df1['Salary'] >= salary_range[0]) & (filtered_df1['Salary'] <= salary_range[1])]
+#     if age_range:
+#         filtered_df1 = filtered_df1[(filtered_df1['Age'] >= age_range[0]) & (filtered_df1['Age'] <= age_range[1])]
+#     if start_date and end_date:
+#         start_date_obj = datetime.strptime(start_date, '%Y-%m-%d')
+#         end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
+#         filtered_df1 = filtered_df1[(filtered_df1['DateofHire'] >= start_date_obj) & (filtered_df1['DateofHire'] <= end_date_obj)]
     
-    # calculate the average employee satisfaction by department for the filtered DataFrame
-    avg_emp_satisfaction = filtered_df1.groupby('Department')['EmpSatisfaction'].mean().reset_index()
+#     # calculate the average employee satisfaction by department for the filtered DataFrame
+#     avg_emp_satisfaction = filtered_df1.groupby('Department')['EmpSatisfaction'].mean().reset_index()
 
-    #generate the bar chart figure based on the filtered and aggregated data
-    fig_bar = px.bar(avg_emp_satisfaction, x='Department', y='EmpSatisfaction',
-                     text=avg_emp_satisfaction['EmpSatisfaction'].apply(lambda x: f'{x:.2f}'),
-                     labels={'EmpSatisfaction': 'Average Satisfaction'},
-                     title='Average Employee Satisfaction by Department',
-                     color_discrete_sequence=['#4b2e83']  # makes bars purple
-    )
-    fig_bar.update_traces(marker_color='#4b2e83', texttemplate='%{text}', textposition='outside')
+#     #generate the bar chart figure based on the filtered and aggregated data
+#     fig_bar = px.bar(avg_emp_satisfaction, x='Department', y='EmpSatisfaction',
+#                      text=avg_emp_satisfaction['EmpSatisfaction'].apply(lambda x: f'{x:.2f}'),
+#                      labels={'EmpSatisfaction': 'Average Satisfaction'},
+#                      title='Average Employee Satisfaction by Department',
+#                      color_discrete_sequence=['#4b2e83']  # makes bars purple
+#     )
+#     fig_bar.update_traces(marker_color='#4b2e83', texttemplate='%{text}', textposition='outside')
 
-    fig_bar.update_layout(
-        showlegend=False,
-        plot_bgcolor='rgba(0,0,0,0)',  # transparent background for plot
-        paper_bgcolor='#f3f2f4',  # light gray background outside the plot area
-        font=dict(color='#4b2e83'),  # purple font color
-        xaxis_tickangle=-45
-    )
+#     fig_bar.update_layout(
+#         showlegend=False,
+#         plot_bgcolor='rgba(0,0,0,0)',  # transparent background for plot
+#         paper_bgcolor='#f3f2f4',  # light gray background outside the plot area
+#         font=dict(color='#4b2e83'),  # purple font color
+#         xaxis_tickangle=-45
+#     )
     
-    return fig_bar
+#     return fig_bar
 
 # run the app
 if __name__ == '__main__':
