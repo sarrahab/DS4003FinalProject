@@ -164,7 +164,7 @@ app.layout = html.Div(children=[
         ''', style={'textAlign': 'center', 'color': '#4b2e83'}), # purple text color
     
     html.Div([
-        # Wrapping each component in a Div with padding for spacing
+        # wrapping each component in a Div with padding for spacing
         html.Div([
             dcc.Dropdown(
                 id='department-dropdown',
@@ -202,7 +202,7 @@ app.layout = html.Div(children=[
         ], style={'marginBottom': '20px', 'position': 'relative'}),
         
         html.Div([
-            html.Label('Salary', style={'fontSize': 15, 'marginTop': '20px'}),  # Adding a label for the salary slider
+            html.Label('Salary', style={'fontSize': 15, 'marginTop': '20px'}),  # adding a label for the salary slider
             dcc.RangeSlider(
                 id='salary-slider',
                 min=df['Salary'].min(),
@@ -213,7 +213,7 @@ app.layout = html.Div(children=[
         ], style={'marginBottom': '20px', 'position': 'relative'}),
         
         html.Div([
-            html.Label('Age', style={'fontSize': 15, 'marginTop': '20px'}),  # Adding a label for the age slider
+            html.Label('Age', style={'fontSize': 15, 'marginTop': '20px'}),  # adding a label for the age slider
             dcc.RangeSlider(
                 id='age-slider',
                 min=df['Age'].min(),
@@ -224,7 +224,7 @@ app.layout = html.Div(children=[
         ], style={'marginBottom': '20px', 'position': 'relative'}),
         
         html.Div([
-            html.Label('Employee Satisfaction Score', style={'fontSize': 15, 'marginTop': '20px'}),  # Adding a label for the satisfaction slider
+            html.Label('Employee Satisfaction Score', style={'fontSize': 15, 'marginTop': '20px'}),  # adding a label for the satisfaction slider
             dcc.Slider(
                 id='satisfaction-slider',
                 min=df['EmpSatisfaction'].min(),
@@ -247,11 +247,11 @@ app.layout = html.Div(children=[
     
     html.Div([
         dcc.Graph(id='salary-engagement-scatter'),
-        dcc.Graph(id='avg-satisfaction-bar'),  # Add this line for the bar chart
+        dcc.Graph(id='avg-satisfaction-bar'),  # add this line for the bar chart
     ], style={'width': '70%', 'display': 'inline-block', 'backgroundColor': '#f3f2f4', 'position': 'relative'}), #light gray background in main content area
 ])
 
-# Callback for updating the scatter plot
+# callback for updating the scatter plot
 @app.callback(
     Output('salary-engagement-scatter', 'figure'),
     [Input('department-dropdown', 'value'),
@@ -264,7 +264,7 @@ app.layout = html.Div(children=[
      Input('date-picker-range', 'start_date'),
      Input('date-picker-range', 'end_date')])
 def update_scatter_plot(department, position, performance, gender, salary_range, age_range, satisfaction, start_date, end_date):
-    # Ensure DateofHire is a datetime object for date filtering
+    # ensure DateofHire is a datetime object for date filtering
     filtered_df = df.copy()
     filtered_df['DateofHire'] = pd.to_datetime(filtered_df['DateofHire'])
 
@@ -277,32 +277,28 @@ def update_scatter_plot(department, position, performance, gender, salary_range,
         filtered_df = filtered_df[filtered_df['PerformanceScore'] == performance]
     if gender:
         filtered_df = filtered_df[filtered_df['Sex'] == gender]
-
     if salary_range:
         filtered_df = filtered_df[(filtered_df['Salary'] >= salary_range[0]) & (filtered_df['Salary'] <= salary_range[1])]
-    
-    # Assuming 'Age' calculation is done and an 'Age' column exists
     if age_range:
         filtered_df = filtered_df[(filtered_df['Age'] >= age_range[0]) & (filtered_df['Age'] <= age_range[1])]
-
     if satisfaction:
         filtered_df = filtered_df[filtered_df['EmpSatisfaction'] == satisfaction]
     
-    # Generate and return the scatter plot figure based on filtered_df
+    # generate and return scatter plot figure based on filtered_df
     fig_scatter = px.scatter(filtered_df, x='Salary', y='EngagementSurvey', 
                              title='Employee Engagement Score VS Salary', 
-                             hover_data=['Employee_Name'])  # Optional: add more data on hover
+                             hover_data=['Employee_Name']) 
     
     fig_scatter.update_layout(
-        plot_bgcolor='rgba(0,0,0,0)',  # Transparent background for plot
-        paper_bgcolor= '#f3f2f4',  # Light gray background outside the plot area
-        font=dict(color= '#4b2e83'),  # Purple font color
+        plot_bgcolor='rgba(0,0,0,0)',  # transparent background for plot
+        paper_bgcolor= '#f3f2f4',  # light gray background outside the plot area
+        font=dict(color= '#4b2e83'),  # purple font color
     )
 
     # Update the y-axis title
     fig_scatter.update_yaxes(title_text='Engagement Survey Score')
 
-    fig_scatter.update_traces(marker=dict(color='#4b2e83'))  # Set to your preferred shade of purple
+    fig_scatter.update_traces(marker=dict(color='#4b2e83'))  # my preferred shade of purple
 
 
     return fig_scatter
@@ -320,13 +316,13 @@ def update_scatter_plot(department, position, performance, gender, salary_range,
      Input('date-picker-range', 'start_date'),
      Input('date-picker-range', 'end_date')])
 def update_bar_chart(department, position, performance, gender, salary_range, age_range, satisfaction, start_date, end_date):
-    # Start with a copy of the full DataFrame
+    
     filtered_df1 = df.copy()
     
-    # Convert 'DateofHire' to datetime for filtering, if necessary
+    # convert 'DateofHire' to datetime for filtering
     filtered_df1['DateofHire'] = pd.to_datetime(filtered_df1['DateofHire'])
     
-    # Apply filters based on the inputs
+    # apply filters based on the inputs
     if department:
         filtered_df1 = filtered_df1[filtered_df1['Department'] == department]
     if position:
@@ -339,7 +335,6 @@ def update_bar_chart(department, position, performance, gender, salary_range, ag
     if salary_range:
         filtered_df1 = filtered_df1[(filtered_df1['Salary'] >= salary_range[0]) & (filtered_df1['Salary'] <= salary_range[1])]
     
-    # Assuming 'Age' calculation is done and an 'Age' column exists
     if age_range:
         filtered_df1 = filtered_df1[(filtered_df1['Age'] >= age_range[0]) & (filtered_df1['Age'] <= age_range[1])]
     
@@ -348,11 +343,10 @@ def update_bar_chart(department, position, performance, gender, salary_range, ag
         end_date_obj = datetime.strptime(end_date, '%Y-%m-%d')
         filtered_df1 = filtered_df1[(filtered_df1['DateofHire'] >= start_date_obj) & (filtered_df1['DateofHire'] <= end_date_obj)]
     
-    # Calculate the average employee satisfaction by department for the filtered DataFrame
+    # calculate the average employee satisfaction by department for the filtered DataFrame
     avg_emp_satisfaction = filtered_df1.groupby('Department')['EmpSatisfaction'].mean().reset_index()
-    #avg_emp_satisfaction['Color'] = ['#4b2e83' if i % 3 == 0 else '#333333' for i in range(len(avg_emp_satisfaction))]
 
-    # Generate the bar chart figure based on the filtered and aggregated data
+    #gGenerate the bar chart figure based on the filtered and aggregated data
     fig_bar = px.bar(avg_emp_satisfaction, x='Department', y='EmpSatisfaction',
                      text=avg_emp_satisfaction['EmpSatisfaction'].apply(lambda x: f'{x:.2f}'),
                      labels={'EmpSatisfaction': 'Average Satisfaction'},
@@ -363,9 +357,9 @@ def update_bar_chart(department, position, performance, gender, salary_range, ag
 
     fig_bar.update_layout(
         showlegend=False,
-        plot_bgcolor='rgba(0,0,0,0)',  # Transparent background for plot
-        paper_bgcolor='#f3f2f4',  # Light gray background outside the plot area
-        font=dict(color='#4b2e83'),  # Purple font color
+        plot_bgcolor='rgba(0,0,0,0)',  # transparent background for plot
+        paper_bgcolor='#f3f2f4',  # light gray background outside the plot area
+        font=dict(color='#4b2e83'),  # purple font color
         xaxis_tickangle=-45
     )
     
