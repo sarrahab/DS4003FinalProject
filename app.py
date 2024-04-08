@@ -245,11 +245,11 @@ app.layout = html.Div(children=[
         
     ], style={'width': '25%', 'display': 'inline-block', 'verticalAlign': 'top', 'padding': '10px', 'backgroundColor': '#f3f2f4', 'position': 'relative'}), #light gray sidebar background
     
-#     html.Div([
-#         dcc.Graph(id='salary-engagement-scatter'),
-#         dcc.Graph(id='avg-satisfaction-bar'),  # add this line for the bar chart
-#     ], style={'width': '70%', 'display': 'inline-block', 'backgroundColor': '#f3f2f4', 'position': 'relative'}), #light gray background in main content area
-# ])
+    # html.Div([
+    #     dcc.Graph(id='salary-engagement-scatter'),
+    #     dcc.Graph(id='avg-satisfaction-bar'),  # add this line for the bar chart
+    # ], style={'width': '70%', 'display': 'inline-block', 'backgroundColor': '#f3f2f4', 'position': 'relative'}), #light gray background in main content area
+])
 
 # # callback for updating the scatter plot
 # @app.callback(
