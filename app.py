@@ -127,9 +127,9 @@ salary_max = df['Salary'].max()
 salary_mid = round((salary_min + salary_max) / 2 / 1000) * 1000  
 
 salary_marks = {
-    salary_min: f'${salary_min:,}',
+    int(salary_min): f'${int(salary_min):,}',
     int(salary_mid): f'${int(salary_mid):,}',
-    salary_max: f'${salary_max:,}'
+    int(salary_max): f'${int(salary_max):,}'
 }
 
 
@@ -138,9 +138,9 @@ age_max = df['Age'].max()
 age_mid = round((age_min + age_max) / 2 / 10) * 10
 
 age_marks = {
-    age_min: f'{age_min} yrs',
+    int(age_min): f'{int(age_min)} yrs',
     int(age_mid): f'{int(age_mid)} yrs',
-    age_max: f'{age_max} yrs'
+    int(age_max): f'{int(age_max)} yrs'
 }
 
 # correcting marks for EmpSatisfaction slider to ensure keys are Python integers
