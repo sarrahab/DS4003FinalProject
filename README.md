@@ -2,6 +2,8 @@
 
 My Render URL: https://ds4003finalproject-1.onrender.com/
 
+Data Source: https://www.kaggle.com/datasets/rhuebner/human-resources-data-set/code
+
 ## Introduction:
 
 The HR Analytics Dashboard is a dynamic visualization tool designed to enable deep insights into various aspects of employee engagement, performance, and satisfaction within an organization. This project was created as a part of my ongoing learning and development in data science and aims to highlight my skills in data manipulation, visualization, and interactive dashboard design using Python and Plotly Dash.
