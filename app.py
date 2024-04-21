@@ -194,8 +194,8 @@ app.layout = html.Div(children=[
 
                 # Row for bar graph and line graph
                 html.Div([
-                    dcc.Graph(id='avg-satisfaction-bar', style={'display': 'inline-block', 'width': '35%'}),
-                    dcc.Graph(id='absences-salary-line', style={'display': 'inline-block', 'width': '65%'}),
+                    dcc.Graph(id='avg-satisfaction-bar', style={'display': 'inline-block', 'width': '35%', 'minHeight': '525px'}),
+                    dcc.Graph(id='absences-salary-line', style={'display': 'inline-block', 'width': '65%', 'minHeight': '525px'}),
                 ], style={'display': 'flex', 'width': '100%'}),
             ], style={'width': '75%', 'display': 'inline-block', 'verticalAlign': 'top', 'backgroundColor': '#CCCCCC'}),
         ], style={'display': 'flex', 'width': '100%'}),
