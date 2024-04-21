@@ -43,6 +43,7 @@ Step 5: Integration and Responsiveness
 Ensuring the dashboard responded efficiently to user inputs across all filters involved extensive testing and adjustments to the data querying logic in the callbacks.
 
 Debugging and Enhancements
+
 Step 6: Debugging and Testing
 
 One major issue was the dashboard layout breaking when certain filters were applied. This was due to improper handling of empty data slices returned from filtered datasets. I learned to implement checks and balances to handle such scenarios gracefully.
