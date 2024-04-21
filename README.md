@@ -40,8 +40,11 @@ A challenge was ensuring these elements interacted correctly with the graphs, wh
 #### Step 4: Graph Creation
 
 Scatter Plot: Showed the relationship between salary and employee engagement. Initially, this graph was squished due to layout constraints, which I adjusted by modifying CSS properties.
-Bar Chart: Displayed average employee satisfaction by department. Aligning this next to other visualizations without overcrowding was a challenge, solved by adjusting the flex properties of the containers.
+
+Bar Chart: Displayed average employee satisfaction by department. Aligning this next to other visualizations without overcrowding was a challenge, solved by adjusting the flex properties of the containers
+
 Pie Chart: Represented gender distribution. It was initially misaligned with other charts, which I corrected by tweaking the grid layout.
+
 Line Graph: Added later to show absences vs. salary by department. Making this graph informative involved aggregating data more effectively, by rounding off salaries and grouping by department, which I implemented using Pandas' grouping and rounding capabilities.
 
 #### Step 5: Integration and Responsiveness
@@ -63,16 +66,27 @@ The choice of colors was adjusted several times to enhance readability and aesth
 ## Data Science Concepts Applied
 
 Data Wrangling: The raw dataset underwent a series of processing steps including cleaning, normalization, and transformation to prepare it for analysis and visualization.
+
 Exploratory Data Analysis (EDA): Before developing the dashboard, extensive EDA was conducted to understand the distributions and relationships within the data, which guided the design and functionality of the interactive components.
+
 Statistical Analysis: Basic statistical methods were applied to summarize the data and calculate key metrics such as average salaries and satisfaction levels.
+
 Interactive Visualization: Using Plotly Dash, a framework for building interactive web-based dashboards, I implemented multiple interactive elements that enable real-time data exploration through user inputs.
-Learning Experiences
+
+## Learning Experiences
+
 UI/UX Design: Developing a user-friendly interface required thoughtful layout planning and element arrangement to ensure the dashboard is intuitive and accessible.
+
 Debugging and Problem Solving: Throughout the development process, various challenges such as data inconsistencies and coding errors needed to be resolved, enhancing my problem-solving skills.
+
 Performance Optimization: Ensuring the dashboard performs efficiently with large datasets involved optimizing data processing and rendering techniques.
-Strengths and Highlights
+
+## Strengths and Highlights
+
 Adaptability: The dashboard adapts to various data dimensions and user requirements, showcasing flexibility in data representation.
+
 Detail-Oriented: Attention to detail in both data analysis and dashboard aesthetics helped in creating a polished and professional final product.
+
 Technical Proficiency: Utilizing advanced features of Python libraries like Pandas and Plotly Dash to handle data and create dynamic visualizations reflects a high level of technical skill.
 
 ## Conclusion
