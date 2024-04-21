@@ -57,7 +57,7 @@ import numpy as np
 
 # %%
 #read in the dataset and then see first five rows of the dataframe df
-df = pd.read_csv('C:/Users/Student/Downloads/data.csv')
+df = pd.read_csv('data/data.csv')
 df.head()
 
 # %% [markdown]
