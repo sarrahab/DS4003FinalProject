@@ -91,6 +91,8 @@ Detail-Oriented: Attention to detail in both data analysis and dashboard aesthet
 
 Technical Proficiency: Utilizing advanced features of Python libraries like Pandas and Plotly Dash to handle data and create dynamic visualizations reflects a high level of technical skill.
 
+These skills will help me tremendously as I enter the consulting industry, where I'll be helping clients improve their business strategies. I will most likely have to make visualizations and adapt to the client's needs and data availability!
+
 ## Conclusion
 
 The project not only bolstered my technical skills in using Python, Pandas, and Plotly Dash but also improved my understanding of user interface design and the importance of a smooth user experience. Handling real-world data and transforming it into an interactive dashboard provided a holistic learning experience from data preprocessing to user-focused design and optimization.
